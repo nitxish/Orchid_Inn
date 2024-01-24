@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".SignInActivity"
+    android:background="@color/white"
+    android:gravity="center_horizontal"
+    >
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="100dp"
+        android:src="@drawable/logo" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="125dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/email_edt"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            app:boxStrokeErrorColor="@android:color/holo_red_light"
+            app:endIconMode="none"
+            app:errorEnabled="true"
+            app:errorTextColor="@android:color/holo_red_light"
+            app:hintEnabled="false"
+            app:boxStrokeWidth="2dp"
+            app:boxStrokeColor="@color/app_color"
+            >
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Email id"
+                android:imeOptions="actionNext"
+                android:inputType="textEmailAddress"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/password_edt"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            app:boxStrokeErrorColor="@android:color/holo_red_light"
+            app:endIconMode="password_toggle"
+            app:errorEnabled="false"
+            app:errorTextColor="@android:color/holo_red_light"
+            app:hintEnabled="false"
+            app:boxStrokeWidth="2dp"
+            app:boxStrokeColor="@color/app_color"
+            >
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:hint="Password"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:singleLine="true" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/forgot_password"
+            android:text="Forgot Password"
+            android:layout_gravity="end"/>
+
+
+
+        <Button
+            android:id="@+id/sign_in_btn"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Sign In" />
+
+
+        <TextView
+            android:id="@+id/sign_up_here"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="New to Orchid Inn? Sign Up here" />
+    </LinearLayout>
+
+
+</LinearLayout>

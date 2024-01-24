@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/bot_home"
+        android:title="Home"
+        android:icon="@drawable/icon_home" />
+
+    <item android:id="@+id/bot_book"
+        android:title="Book"
+        android:icon="@drawable/icon_calandar" />
+
+    <item android:id="@+id/bot_stay"
+        android:title="Stays"
+        android:icon="@drawable/icon_bed"/>
+
+    <item android:id="@+id/bot_acc"
+        android:title="Account"
+        android:icon="@drawable/icon_profile1" />
+
+</menu>

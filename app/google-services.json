@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "362961867378",
+    "firebase_url": "https://orchid-inn-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "orchid-inn",
+    "storage_bucket": "orchid-inn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:362961867378:android:f1cfa62ae1775333e528eb",
+        "android_client_info": {
+          "package_name": "com.example.orchidinn"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBGo0UnEwRmkl32whQfZy__Gn4rWjCzN6Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

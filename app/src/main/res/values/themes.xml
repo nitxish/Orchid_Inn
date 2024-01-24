@@ -1,0 +1,39 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.OrchidInn" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <item name="colorPrimary">#775277</item>
+    </style>
+
+    <style name="Theme.OrchidInn" parent="Base.Theme.OrchidInn" />
+
+    <style name="TextInputLayoutStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+        <item name="boxStrokeColor">@color/app_color</item>
+        <item name="boxStrokeWidth">2dp</item>
+    </style><!-- Custom style for the Material Date Picker -->
+    <style name="CustomDatePickerTheme" parent="ThemeOverlay.MaterialComponents.MaterialCalendar">
+        <!-- Customize date picker attributes here -->
+        <!-- For example, changing the color of the selected date -->
+        <item name="materialCalendarStyle">@style/CustomMaterialCalendar</item>
+    </style>
+
+    <!-- Custom style for the calendar within the Material Date Picker -->
+    <style name="CustomMaterialCalendar" parent="Widget.MaterialComponents.MaterialCalendar">
+        <!-- Customize calendar attributes here -->
+        <!-- For example, changing the selected date background color -->
+        <item name="rangeFillColor">@color/dateRangeColor</item>
+        <item name="materialCalendarFullscreenTheme">@style/CustomMaterialCalendarFullscreen</item>
+    </style>
+
+
+
+    <!-- Custom style for the fullscreen calendar within the Material Date Picker -->
+    <style name="CustomMaterialCalendarFullscreen" parent="Widget.MaterialComponents.MaterialCalendar">
+        <!-- Customize fullscreen calendar attributes here -->
+        <!-- For example, changing the selected date background color -->
+        <item name="colorPrimary">#E312E3</item>
+    </style>
+
+
+
+</resources>
