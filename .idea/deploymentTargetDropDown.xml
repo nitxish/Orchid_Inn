@@ -5,6 +5,12 @@
       <entry key="BookingActivity">
         <State />
       </entry>
+      <entry key="BookingModel">
+        <State />
+      </entry>
+      <entry key="RoomSelect">
+        <State />
+      </entry>
       <entry key="SignInActivity">
         <State />
       </entry>

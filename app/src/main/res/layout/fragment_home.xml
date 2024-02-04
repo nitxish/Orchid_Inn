@@ -15,6 +15,20 @@
         android:textColor="#702670"
         android:layout_centerHorizontal="true" />
 
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Explore Hotels"
+        android:layout_marginTop="300dp"
+        android:layout_marginStart="25dp"/>
+    <Button
+        android:id="@+id/book_your_stay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Book Your Stay"
+        android:layout_marginTop="300dp"
+        android:layout_marginStart="230dp"/>
+
 
 
 
