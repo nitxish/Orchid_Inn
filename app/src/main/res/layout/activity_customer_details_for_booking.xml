@@ -1,9 +1,436 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F1F1F1"
+    android:orientation="vertical"
     tools:context=".CustomerDetailsForBookingActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/app_color">
+
+        <ImageButton
+            android:id="@+id/back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:src="@drawable/icon_arrow_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:text="Payment"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RelativeLayout
+                android:id="@+id/hotel_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/curve_layout_border"
+                android:padding="10dp">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/hotel_img"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_centerVertical="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/logo2" />
+
+                <TextView
+                    android:id="@+id/hotel_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@id/hotel_img"
+                    android:maxLines="2"
+                    android:text="#F1F1F1Taj View Coramendal#1ADEAAFF,chennai"
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/hotel_address"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/hotel_name"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_toRightOf="@id/hotel_img"
+                    android:maxLines="2"
+                    android:text="12,Anna Salai,Teynampet,  Chennai,TamilNadu" />
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:id="@+id/checkin_layout"
+                android:layout_width="172dp"
+                android:layout_height="80dp"
+                android:layout_below="@id/hotel_layout"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/curve_layout_border"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/check_in"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Check - In :  "
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/checkin_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/check_in"
+                    android:text="10AM"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/check_in_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/check_in"
+                    android:layout_centerHorizontal="true"
+                    android:text="13 Mar, 24"
+                    android:textSize="30dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/checkout_layout"
+                android:layout_width="172dp"
+                android:layout_height="80dp"
+                android:layout_below="@id/hotel_layout"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_toRightOf="@id/checkin_layout"
+                android:background="@drawable/curve_layout_border"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/check_out"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Check - In :  "
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/checkout_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/check_out"
+                    android:text="12AM"
+                    android:textSize="20dp" />
+
+                <TextView
+                    android:id="@+id/check_out_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/check_out"
+                    android:layout_centerHorizontal="true"
+                    android:text="14 Mar, 24"
+                    android:textSize="30dp" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/guests_layout"
+                android:layout_width="172dp"
+                android:layout_height="80dp"
+                android:layout_below="@id/checkin_layout"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                android:background="@drawable/curve_layout_border"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/guests"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Guests : "
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/guest_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/guests"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:text="2"
+                    android:textSize="20dp" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/room_layout"
+                android:layout_width="172dp"
+                android:layout_height="80dp"
+                android:layout_below="@id/checkin_layout"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="40dp"
+                android:layout_toRightOf="@id/guests_layout"
+                android:background="@drawable/curve_layout_border"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/rooms"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:text="Rooms : "
+                    android:textSize="20dp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/room_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/rooms"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="8dp"
+                    android:text="2"
+                    android:textSize="20dp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/selected_room_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/guests_layout"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:text="Selected Room Type:"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/selected_room"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/selected_room_label"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:maxLines="3"
+                android:text="sts"
+                android:textSize="18dp" />
+
+            <TextView
+                android:id="@+id/personal_info_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/selected_room"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="15dp"
+                android:text="Personal Information"
+                android:textSize="22dp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/personal_info_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/personal_info_tv"
+                android:layout_marginTop="15dp"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/full_name"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_text_border"
+                    android:hint="Full Name"
+                    android:paddingStart="11dp"
+                    android:paddingEnd="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/customer_address"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_text_border"
+                    android:hint="Address"
+                    android:paddingStart="11dp"
+                    android:paddingEnd="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/state"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_text_border"
+                    android:hint="State"
+                    android:paddingStart="11dp"
+                    android:paddingEnd="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/country"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_text_border"
+                    android:hint="Country"
+                    android:paddingStart="11dp"
+                    android:paddingEnd="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/customer_mail"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_text_border"
+                    android:hint="Email"
+                    android:paddingStart="11dp"
+                    android:paddingEnd="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/black" />
+
+                <EditText
+                    android:id="@+id/customer_ph_no"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/edit_text_border"
+                    android:hint="Phone No"
+                    android:inputType="number"
+                    android:paddingStart="11dp"
+                    android:paddingEnd="10dp"
+                    android:singleLine="true"
+                    android:textColor="@color/black" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/personal_info_layout"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:text="Price Summary"
+                    android:textSize="22dp"
+                    android:textStyle="bold" />
+
+                <RelativeLayout
+                    android:layout_width="350dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/hotel_layout"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="15dp"
+                    android:background="@drawable/curve_layout_border"
+                    android:padding="10dp">
+
+                    <TextView
+                        android:id="@+id/room_type"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Luxury Suite"
+                        android:textSize="16dp" />
+
+                    <TextView
+                        android:id="@+id/tax_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/room_type"
+                        android:layout_marginStart="15dp"
+                        android:text="*Inclusive of all Taxes"
+                        android:textColor="@color/design_default_color_error" />
+
+                    <TextView
+                        android:id="@+id/amount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+                        android:text="Total Amount 1000"
+                        android:textStyle="bold"
+                        android:layout_below="@id/tax_label"
+                        android:textColor="@android:color/black"
+                        android:textSize="18dp" />
+
+                </RelativeLayout>
+
+                <RadioGroup
+                    android:id="@+id/payment_method_rg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:padding="10dp">
+
+                    <RadioButton
+                        android:id="@+id/pay_at_hotel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Pay at hotel"
+                        android:textSize="20dp" />
+
+                    <RadioButton
+                        android:id="@+id/pay_online"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:checked="true"
+                        android:text="Pay Online"
+                        android:textSize="20dp" />
+
+                </RadioGroup>
+
+                <Button
+                    android:id="@+id/payment_gateway"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Book" />
+
+
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

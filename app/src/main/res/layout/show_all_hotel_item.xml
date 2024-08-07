@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <RelativeLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/hotel_image"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo" />
+
+        <TextView
+            android:id="@+id/hotel_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/hotel_image"
+            android:text="Orchid Inn, Chenai"
+            android:textColor="@color/black"
+            android:lines="1"
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/hotel_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/hotel_name"
+            android:text="Parthasarathy nagar 11th street, adambakkam, chennai-600088"
+            android:textColor="@color/black"
+            android:maxLines="2"
+            android:textSize="12dp" />
+
+        <RatingBar
+            android:id="@+id/hotel_rating"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/hotel_address"
+            android:layout_centerVertical="true"
+            android:isIndicator="false"
+            android:numStars="5"
+            android:progressTint="#FFD700"
+            android:rating="2.5"
+            android:stepSize="0.5" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@id/content"
+        android:background="@android:color/darker_gray"/>
+
+</RelativeLayout>

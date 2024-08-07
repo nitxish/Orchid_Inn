@@ -5,10 +5,6 @@
         android:title="Home"
         android:icon="@drawable/icon_home" />
 
-    <item android:id="@+id/bot_book"
-        android:title="Book"
-        android:icon="@drawable/icon_calandar" />
-
     <item android:id="@+id/bot_stay"
         android:title="Stays"
         android:icon="@drawable/icon_bed"/>

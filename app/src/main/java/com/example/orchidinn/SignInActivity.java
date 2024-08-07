@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -30,6 +31,7 @@ public class SignInActivity extends AppCompatActivity {
     TextView signUp, forgotPassword;
     FirebaseAuth auth;
     AlertDialog alertDialog;
+    ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +43,11 @@ public class SignInActivity extends AppCompatActivity {
         signInBtn = findViewById(R.id.sign_in_btn);
         signUp = findViewById(R.id.sign_up_here);
         forgotPassword = findViewById(R.id.forgot_password);
-        auth = FirebaseAuth.getInstance();
 
+        pd = new ProgressDialog(SignInActivity.this);
+        pd.setMessage("Loading...");
+
+        auth = FirebaseAuth.getInstance();
 
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,7 +60,6 @@ public class SignInActivity extends AppCompatActivity {
         forgotPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 resetPassword();
             }
         });
@@ -95,19 +99,19 @@ public class SignInActivity extends AppCompatActivity {
         }
 
         if (!status) {
+            pd.show();
             loginExistingUser(email, password);
         }
 
     }
 
     private void loginExistingUser(String email, String password) {
-
-
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if (task.isSuccessful()) {
+                    pd.dismiss();
                     Intent intent = new Intent(SignInActivity.this, MainActivity.class);
                     startActivity(intent);
                     finish();
@@ -118,7 +122,7 @@ public class SignInActivity extends AppCompatActivity {
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
-
+                pd.dismiss();
                 Toast.makeText(SignInActivity.this, "Invalid Email or Password", Toast.LENGTH_SHORT).show();
             }
         });
@@ -161,28 +165,6 @@ public class SignInActivity extends AppCompatActivity {
                     mailInput.setError("Please enter a valid email address");
                 } else {
                     sendPasswordResetEmail(resetEmail);
-                    // Send password reset email
-                    // Check if the email is registered
-                    /*auth.fetchSignInMethodsForEmail(resetEmail).addOnCompleteListener(new OnCompleteListener<SignInMethodQueryResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<SignInMethodQueryResult> task) {
-                            if (task.isSuccessful()) {
-                                boolean isEmailRegistered = !task.getResult().getSignInMethods().isEmpty();
-
-                                if (isEmailRegistered) {
-                                    // Email is registered, send a password reset email
-                                    sendPasswordResetEmail(resetEmail);
-                                } else {
-                                    // Email is not registered
-                                    Toast.makeText(SignInActivity.this, "Email is not registered", Toast.LENGTH_SHORT).show();
-                                }
-                            } else {
-                               // Log.e("PasswordResetActivity", "Error checking email registration", task.getException());
-                                Toast.makeText(SignInActivity.this, "Error checking email registration", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });*/
-
 
                 }
             }
@@ -202,9 +184,5 @@ public class SignInActivity extends AppCompatActivity {
                 Toast.makeText(SignInActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
-
-
     }
-
-
 }

@@ -1,33 +1,126 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/room_name"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/room_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Room1"
+            android:textSize="22dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/description_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/room_name"
+            android:layout_marginTop="5dp"
+            android:maxLines="20"
+            android:text="Description: "
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/room_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/description_label"
+            android:maxLines="10"
+            android:text="Featuring stylish interiors and a friendly staff committed.."
+            android:textSize="18dp" />
+
+        <TextView
+            android:id="@+id/price_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/room_description"
+            android:layout_marginTop="5dp"
+            android:maxLines="20"
+            android:text="Price: "
+            android:textSize="18dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/room_rate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/room_description"
+            android:layout_marginTop="5dp"
+            android:layout_toRightOf="@id/price_label"
+            android:text="rate"
+            android:textSize="18dp" />
+
+        <CheckBox
+            android:id="@+id/add_room_checkBox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:text="Add Room" />
+
+        <ImageView
+            android:id="@+id/toggleButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/room_rate"
+            android:layout_centerHorizontal="true"
+            android:clickable="true"
+            android:contentDescription="Toggle button"
+            android:focusable="true"
+            android:src="@drawable/icon_expand_more" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.6dp"
+            android:layout_below="@id/toggleButton"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/darker_gray" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Room1"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:layout_marginTop="10dp"/>
+        android:layout_below="@id/header"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingTop="10dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/room_img_1"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo2" />
 
 
-    <TextView
-        android:id="@+id/room_rate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="rate"
-        android:textSize="20dp"
-        android:layout_marginTop="10dp"/>
+        <ImageView
+            android:id="@+id/room_img_2"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo2" />
 
-    <Button
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:text="Book"
-        android:layout_marginTop="10dp"
-        android:layout_gravity="center_horizontal"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.6dp"
+            android:layout_marginTop="5dp"
+            android:background="@android:color/darker_gray" />
 
-</LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

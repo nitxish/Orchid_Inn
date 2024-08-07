@@ -3,6 +3,7 @@ package com.example.orchidinn;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
@@ -12,6 +13,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.orchidinn.Admin.AddRoomActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -26,8 +28,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.util.HashMap;
 
 public class SignUpActivity extends AppCompatActivity {
-
-
     TextInputLayout fullNameEdt, emailEdt, passwordEdt, conformPassEdt;
     EditText pass;
     Button signupBtn;
@@ -35,6 +35,7 @@ public class SignUpActivity extends AppCompatActivity {
     FirebaseAuth auth;
     FirebaseDatabase database;
     DatabaseReference reference;
+    ProgressDialog pd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,9 @@ public class SignUpActivity extends AppCompatActivity {
         conformPassEdt = findViewById(R.id.coform_password);
         signIn = findViewById(R.id.sign_in_here);
         signupBtn = findViewById(R.id.sign_up_btn);
+
+        pd = new ProgressDialog(SignUpActivity.this);
+        pd.setMessage("Loading...");
 
         signupBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,6 +74,7 @@ public class SignUpActivity extends AppCompatActivity {
 
 
     private void checkDetails() {
+
         String fullName = fullNameEdt.getEditText().getText().toString();
         String email = emailEdt.getEditText().getText().toString();
         String password = passwordEdt.getEditText().getText().toString();
@@ -117,6 +122,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
         if (!status) {
+            pd.show();
             registerUser(email, password, fullName);
         }
     }
@@ -125,7 +131,6 @@ public class SignUpActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         database = FirebaseDatabase.getInstance();
         reference = database.getReference("Users");
-
 
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
             @Override
@@ -142,16 +147,17 @@ public class SignUpActivity extends AppCompatActivity {
                     // when user is registered successfully store user info in firebase realtime database
                     //using hashmap for store user details
                     HashMap<Object, String> hashMap = new HashMap<>();
-                    hashMap.put("Name", fullName);
-                    hashMap.put("Email", emailId);
-                    hashMap.put("Password", password);
-                    hashMap.put("UserId", userId);
+                    hashMap.put("name", fullName);
+                    hashMap.put("email", emailId);
+                    hashMap.put("password", password);
+                    hashMap.put("userId", userId);
 
 
                     //put data with in hashmap in database
                     reference.child(userId).setValue(hashMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                         @Override
                         public void onSuccess(Void unused) {
+                            pd.dismiss();
                             Toast.makeText(SignUpActivity.this, "Welcome " + fullName, Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
                             startActivity(intent);
@@ -161,18 +167,21 @@ public class SignUpActivity extends AppCompatActivity {
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
+                            pd.dismiss();
                             Toast.makeText(SignUpActivity.this, "Error" + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
 
                 } else {
                     //if sign in not successfully completed
+                    pd.dismiss();
                     Toast.makeText(SignUpActivity.this, "Error: Registration is unsuccessfully", Toast.LENGTH_SHORT).show();
                 }
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception e) {
+                pd.dismiss();
                 //if user register failed
                 Toast.makeText(SignUpActivity.this, "Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             }

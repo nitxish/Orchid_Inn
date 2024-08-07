@@ -15,16 +15,20 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.orchidinn.Adapter.HomeAdapter;
+import com.example.orchidinn.Adapter.StayAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
     ViewPager2 viewPager2;
-    viewPagerAdapter viewPageradapter;
+    HomeAdapter viewPagerAdapter;
     BottomNavigationView bottomNavigationView;
+
     FirebaseAuth auth;
     String[] storagePermission;
 
@@ -34,13 +38,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         bottomNavigationView = findViewById(R.id.bottomNav);
         viewPager2 = findViewById(R.id.viewPager);
-        viewPageradapter = new viewPagerAdapter(this);
-        viewPager2.setAdapter(viewPageradapter);
+        viewPagerAdapter = new HomeAdapter(this);
+        viewPager2.setAdapter(viewPagerAdapter);
+
 
         auth = FirebaseAuth.getInstance();
         storagePermission = new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE};
 
-        checkLoginStatus();
+        //checkLoginStatus();
 
         // Disable swiping between fragments
         viewPager2.setUserInputEnabled(false);
@@ -54,14 +59,11 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.bot_home:
                         viewPager2.setCurrentItem(0);
                         break;
-                    case R.id.bot_book:
+                    case R.id.bot_stay:
                         viewPager2.setCurrentItem(1);
                         break;
-                    case R.id.bot_stay:
-                        viewPager2.setCurrentItem(2);
-                        break;
                     case R.id.bot_acc:
-                        viewPager2.setCurrentItem(3);
+                        viewPager2.setCurrentItem(2);
                         break;
                 }
                 return false;
@@ -76,12 +78,9 @@ public class MainActivity extends AppCompatActivity {
                         bottomNavigationView.getMenu().findItem(R.id.bot_home).setChecked(true);
                         break;
                     case 1:
-                        bottomNavigationView.getMenu().findItem(R.id.bot_book).setChecked(true);
-                        break;
-                    case 2:
                         bottomNavigationView.getMenu().findItem(R.id.bot_stay).setChecked(true);
                         break;
-                    case 3:
+                    case 2:
                         bottomNavigationView.getMenu().findItem(R.id.bot_acc).setChecked(true);
                         break;
                 }
@@ -89,9 +88,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+
     }
 
-    private void checkLoginStatus() {
+
+
+   /* private void checkLoginStatus() {
 
         FirebaseUser user = auth.getCurrentUser();
         if(user != null){
@@ -110,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
             finish();
         }
 
-    }
+    }*/
 
     private void requestPermission(){
         ActivityCompat.requestPermissions(MainActivity.this, storagePermission, 10);
